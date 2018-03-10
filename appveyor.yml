@@ -21,7 +21,9 @@ install:
   - if not %perl%==cygwinperl perl -v
   - if     %perl%==cygwinperl c:\cygwin\bin\sh -c "/usr/bin/perl -v"
   - cd C:\projects\%APPVEYOR_PROJECT_NAME%
-  - if %perl%==activeperl       ppm install dmake JSON::XS LWP::UserAgent URI
+## XXX dmake and JSON::XS not available anymore?
+#  - if %perl%==activeperl       ppm install dmake JSON::XS LWP::UserAgent URI
+  - if %perl%==activeperl       ppm install LWP::UserAgent URI
   - if %perl%==strawberryperl   cpanm --installdeps .
   # Install the missing crypt.h for compiling XS modules
   - if %perl%==cygwinperl       C:\cygwin\setup-x86.exe -q --packages=libcrypt-devel
